@@ -1,0 +1,104 @@
+#include<iostream>
+
+#include<conio.h>
+
+using namespace std;
+
+int main()
+
+
+    double balance , deposit , withdraw;
+
+    int option;
+
+    solde=1000; //solde par défaut 
+
+    do{
+
+    
+
+	cout<<"\n\t********MENU*********";
+
+	cout<<"\n\t*                                *";
+
+	cout<<"\n\t*      1. verifier solde        *";
+
+	cout<<"\n\t*      2. depot               *";
+
+	cout<<"\n\t*      3. retrait               *";
+
+	cout<<"\n\t*      4. Transfert               *";
+
+	cout<<"\n\t*      5. Exit                   *";
+
+	cout<<"\n\t*****************************";
+
+	cout<<"\n\t svp choisir une option: ";
+
+	cin>>option;
+
+	switch(option)
+
+	{
+
+		case 1:
+
+			cout<<"\n\tVotre solde is: $"<<solde<<endl;
+
+			break;
+
+		case 2:
+
+			cout<<"\n\tle montant que vous voulez déposer: $";
+
+			cin>>depot;
+
+			solde += depot; // solde =solde + depot;
+
+			cout<<"\n\t votre solde actuel : $"<<solde<<endl;
+
+			break;
+
+		case 3:
+
+			cout<<"\n\tcombien voulez-vous retirer? $";
+
+               cin>>retrait;
+
+			if(solde<retrait)
+
+			   cout<<"\n\tsolde insuffisant"<<endl;
+
+			else
+
+			solde -= retrait; // solde =solde - depot;
+
+			cout<<"\n\t votre solde actuel est de : $"<<solde<<endl;
+
+			break;
+
+		case 4:
+
+			cout<<"\n\t ... a remplir "<<endl;
+
+			break;
+
+		default:
+
+			if(option !=5)
+
+			cout<<"\n\t option invalide merci de réssayer"<<endl;
+
+			break;
+
+			
+
+			}
+
+	
+
+}while(option !=5);
+
+
+
+}
