@@ -1,104 +1,112 @@
-#include<iostream>
-
-#include<conio.h>
-
-using namespace std;
-
-int main()
-
-
-    double balance , deposit , withdraw;
-
-    int option;
-
-    solde=1000; //solde par défaut 
-
-    do{
-
+class point
+{
+    float x, y;
+      
+    public:
+    point(float a = 0, float b = 0){
+        x = a;
+        y = b;
+    }
     
-
-	cout<<"\n\t********MENU*********";
-
-	cout<<"\n\t*                                *";
-
-	cout<<"\n\t*      1. verifier solde        *";
-
-	cout<<"\n\t*      2. depot               *";
-
-	cout<<"\n\t*      3. retrait               *";
-
-	cout<<"\n\t*      4. Transfert               *";
-
-	cout<<"\n\t*      5. Exit                   *";
-
-	cout<<"\n\t*****************************";
-
-	cout<<"\n\t svp choisir une option: ";
-
-	cin>>option;
-
-	switch(option)
-
-	{
-
-		case 1:
-
-			cout<<"\n\tVotre solde is: $"<<solde<<endl;
-
-			break;
-
-		case 2:
-
-			cout<<"\n\tle montant que vous voulez déposer: $";
-
-			cin>>depot;
-
-			solde += depot; // solde =solde + depot;
-
-			cout<<"\n\t votre solde actuel : $"<<solde<<endl;
-
-			break;
-
-		case 3:
-
-			cout<<"\n\tcombien voulez-vous retirer? $";
-
-               cin>>retrait;
-
-			if(solde<retrait)
-
-			   cout<<"\n\tsolde insuffisant"<<endl;
-
-			else
-
-			solde -= retrait; // solde =solde - depot;
-
-			cout<<"\n\t votre solde actuel est de : $"<<solde<<endl;
-
-			break;
-
-		case 4:
-
-			cout<<"\n\t ... a remplir "<<endl;
-
-			break;
-
-		default:
-
-			if(option !=5)
-
-			cout<<"\n\t option invalide merci de réssayer"<<endl;
-
-			break;
-
-			
-
-			}
-
+    float getX(){
+    	return x;
+	}
+	void setX(float a){
+		x = a;
+	}
 	
+	float getY(){
+    	return y;
+	}
+	void setY(float a){
+		y = a;
+	}
+	
+	void afficher(){
+        cout << "(" << x << "," << y << ")";
+    }
+    
+    void translation (float a){
+    	x += a;
+        y += a;
+    }
+    
+             
+	bool comparer(point p){
+        if(x == p.x && y == p.y) 
+			return true;
+        
+		return false;
+    }
+    
+	float distance(point p){
+        return sqrt(pow(x - p.x , 2) + pow(y - p.y , 2));
+    }
+    
+};
 
-}while(option !=5);
 
 
 
-}
+
+
+class cercle{
+    float r;
+    point centre;
+    
+    public:
+    	
+    cercle(float a, point p){
+        r = a;
+        centre = p;
+    }
+    
+    cercle(float a, float x, float y){
+        r = a;
+        centre.setX(x);
+        centre.setY(y);
+    }
+    
+    void afficher(){
+    	cout << "Affichage du cercle : ";
+    	cout<<"Le rayon est: " << r << endl;
+    	cout << "Le centre est : ";
+        centre.afficher();
+        cout<<endl<<"-----"<<endl;
+    }
+    
+    float getRayon(){
+    	return r;
+	}
+	
+    void setRayon(float a){
+         r = a;
+    }
+	
+	point getCentre(){
+		return centre;
+	}
+    void translation(float a){
+        centre.translation(a);
+    }  
+    
+    float surface(){
+        return r * r * 3.14;
+    } 
+    
+    float perimetre(){
+        return 2 * 3.14 * r;
+    }   
+	            
+    bool egalite(cercle c){
+       	return (c.r == r and centre.comparer(c.centre));
+    } 
+	 
+    bool appartenance(point p){
+       	if(centre.distance(p) <= r){
+           return true;
+        }
+        return false; 
+    }             
+};
+
